@@ -1,5 +1,18 @@
-import fetchMovies from 'components/fetchMovies';
+import { fetchMovies } from 'components/fetchMovies';
 import { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import styled from '@emotion/styled';
+
+const MovieLink = styled(NavLink)`
+  color: #fff;
+  &:hover,
+  &:focus {
+    color: #ddd;
+  }
+  &:active {
+    color: red;
+  }
+`;
 
 export default function Trending() {
   const [movies, setMovies] = useState([]);
@@ -18,7 +31,13 @@ export default function Trending() {
   console.log(2, movies);
   const moviesMap = movies
     ? movies.map(({ title, id }) => {
-        return <li key={id}>{title}</li>;
+        return (
+          <li key={id}>
+            <MovieLink to={`movie/${id}`}>
+              {title} {id}
+            </MovieLink>
+          </li>
+        );
       })
     : null;
   return <ul>{moviesMap}</ul>;
