@@ -1,4 +1,5 @@
 import { Movie } from 'pages/Movie';
+import { Search } from 'pages/Search';
 import Trending from 'pages/Trending';
 import { Route, Routes } from 'react-router-dom';
 import './index.css';
@@ -12,7 +13,7 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Trending />} end />
-          <Route path="hashboard" element={<div>Hashboard</div>} />
+          <Route path="search" element={<Search />} />
           <Route path="/movie/:id" element={<Movie />} />
           <Route path="*" element={<div>404 Not found</div>} />
         </Route>

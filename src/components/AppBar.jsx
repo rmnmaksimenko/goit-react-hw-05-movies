@@ -2,7 +2,7 @@ import { NavItem } from './AppBar.styled';
 
 const navItems = [
   { href: '/', text: 'Trending' },
-  { href: 'hashboard', text: 'Hashboard' },
+  { href: 'search', text: 'Search' },
 ];
 
 export const AppBar = () => {

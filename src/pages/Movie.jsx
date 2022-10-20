@@ -1,13 +1,15 @@
 import { fetchMovieById } from 'components/fetchMovies';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 export const Movie = () => {
   const { id } = useParams();
   const [movieDesc, setMovieDesc] = useState('');
   const [title, setTitle] = useState('');
   const [score, setScore] = useState('0');
-  //   console.log(id);
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
+  console.log(location);
   useEffect(() => {
     async function showMovie() {
       try {
@@ -24,6 +26,7 @@ export const Movie = () => {
   }, []);
   return (
     <main>
+      <Link to={backLinkHref}>Back</Link>
       <div>
         <h2>{title}</h2>
         <p>User score: {score}%</p>
