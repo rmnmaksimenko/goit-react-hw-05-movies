@@ -1,23 +1,13 @@
-import styled from '@emotion/styled';
-import { searchMovies } from 'components/fetchMovies';
+import { searchMovies } from 'components/FetchAPI';
+import moviesMap from 'components/MoviesMap';
 import { SearchBox } from 'components/SearchBox';
 import { useEffect, useState } from 'react';
-import { NavLink, useSearchParams } from 'react-router-dom';
-
-const MovieLink = styled(NavLink)`
-  color: #fff;
-  &:hover,
-  &:focus {
-    color: #ddd;
-  }
-  &:active {
-    color: red;
-  }
-`;
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const Search = () => {
   const [movieFilter, setMovieFilter] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
 
   const movieName = searchParams.get('query') ?? '';
 
@@ -39,19 +29,10 @@ export const Search = () => {
   }, [movieName]);
   console.log(movieFilter);
 
-  const moviesMap = movieFilter
-    ? movieFilter.map(({ title, id }) => {
-        return (
-          <li key={id}>
-            <MovieLink to={`/movie/${id}`}>{title}</MovieLink>
-          </li>
-        );
-      })
-    : null;
   return (
     <div>
       <SearchBox onQuery={handleSubmit} />
-      <ul>{moviesMap}</ul>
+      <ul>{moviesMap(movieFilter, location)}</ul>
     </div>
   );
 };
