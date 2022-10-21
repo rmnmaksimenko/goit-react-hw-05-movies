@@ -30,7 +30,7 @@ const Cast = () => {
       }
     }
     showCast();
-  }, []);
+  }, [id]);
   console.log(cast);
   return <div>{cast}</div>;
 };

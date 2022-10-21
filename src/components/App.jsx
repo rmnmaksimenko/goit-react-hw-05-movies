@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Cast from './Cast';
 import './index.css';
 import { Layout } from './Layout';
+import Reviews from './Reviews';
 
 // api_key = 1b4670fa78c776f91ad91934fb8aeb13
 
@@ -17,7 +18,7 @@ export const App = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/movie/:id" element={<Movie />}>
             <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<div>Reviews</div>} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="*" element={<div>404 Not found</div>} />
         </Route>
