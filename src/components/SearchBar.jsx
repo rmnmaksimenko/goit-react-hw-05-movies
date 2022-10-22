@@ -1,4 +1,4 @@
-import { Field, Form, Formik } from 'formik';
+import { Field, Formik } from 'formik';
 import { SearchBox } from './SearchBar.styled';
 
 const initialValues = {
