@@ -1,10 +1,11 @@
 import { Field, Form, Formik } from 'formik';
+import { SearchBox } from './SearchBar.styled';
 
 const initialValues = {
   query: '',
 };
 
-export const SearchBox = ({ onQuery }) => {
+export const SearchBar = ({ onQuery }) => {
   const HandleSearch = (values, { resetForm }) => {
     const { query } = values;
     if (query.trim() === '') {
@@ -16,7 +17,7 @@ export const SearchBox = ({ onQuery }) => {
 
   return (
     <Formik initialValues={initialValues} onSubmit={HandleSearch}>
-      <Form>
+      <SearchBox>
         <Field
           type="text"
           name="query"
@@ -24,8 +25,8 @@ export const SearchBox = ({ onQuery }) => {
           autoFocus
           required
         />
-        <button type="sublit">OK</button>
-      </Form>
+        <button type="sublit">Search</button>
+      </SearchBox>
     </Formik>
   );
 };

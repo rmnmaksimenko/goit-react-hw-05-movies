@@ -12,29 +12,28 @@ const Reviews = () => {
       try {
         const { data } = await fetchReviews(id);
         setReviews(
-          data.results.map(({ author, content, id }) => {
-            return (
-              <div key={id}>
-                <p>Author: {author}</p>
-                <p>{content}</p>
-              </div>
-            );
-          })
+          data.results.length > 0 ? (
+            data.results.map(({ author, content, id }) => {
+              return (
+                <div key={id}>
+                  <p>Author: {author}</p>
+                  <p>{content}</p>
+                </div>
+              );
+            })
+          ) : (
+            <div>
+              <p>Sorry, we don't have reviews for this movie</p>
+            </div>
+          )
         );
-        console.log(data.results);
+        // console.log(data.results);
       } catch (error) {
         console.log(error);
       }
     }
     showReviews();
   }, [id]);
-  if (!reviews) {
-    setReviews(
-      <div>
-        <p>Sorry, we don't have reviews for this movie</p>
-      </div>
-    );
-  }
   return <div>{reviews}</div>;
 };
 export default Reviews;

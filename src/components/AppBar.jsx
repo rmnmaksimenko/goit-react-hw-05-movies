@@ -1,20 +1,22 @@
-import { NavItem } from './AppBar.styled';
+import { Nav, NavItem } from './AppBar.styled';
 
-const navItems = [
-  { href: '/', text: 'Trending' },
-  { href: 'search', text: 'Search' },
-];
+// const navItems = [
+//   { href: '/', text: 'Trending' },
+//   { href: 'search', text: 'Search' },
+// ];
 
 export const AppBar = () => {
   return (
-    <div>
-      <nav>
-        {navItems.map(({ href, text }) => (
-          <NavItem to={href} key={href}>
-            {text}
-          </NavItem>
-        ))}
-      </nav>
-    </div>
+    <Nav>
+      {/* {navItems.map(({ href, text }) => (
+        <NavItem to={href} key={href}>
+          {text}
+        </NavItem>
+      ))} */}
+      <NavItem to={'/'} end>
+        Trending
+      </NavItem>
+      <NavItem to={'search'}>Search</NavItem>
+    </Nav>
   );
 };

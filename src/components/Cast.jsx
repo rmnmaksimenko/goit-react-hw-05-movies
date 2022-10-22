@@ -10,7 +10,7 @@ const Cast = () => {
     async function showCast() {
       try {
         const { data } = await fetchCast(id);
-        console.log(data.cast);
+        // console.log(data.cast);
         setCast(
           data.cast.map(({ name, character, profile_path, id }) => {
             const photo = !profile_path
@@ -18,7 +18,7 @@ const Cast = () => {
               : `https://image.tmdb.org/t/p/original${profile_path}`;
             return (
               <CastBox key={id}>
-                <img width={200} src={photo} alt={name} />
+                <img width={120} src={photo} alt={name} />
                 <p>{name}</p>
                 <p>Character: {character}</p>
               </CastBox>
@@ -31,7 +31,7 @@ const Cast = () => {
     }
     showCast();
   }, [id]);
-  console.log(cast);
+  //   console.log(cast);
   return <div>{cast}</div>;
 };
 

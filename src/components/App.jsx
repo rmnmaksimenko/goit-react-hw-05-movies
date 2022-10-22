@@ -1,4 +1,4 @@
-import { Movie } from 'pages/Movie';
+import { Movie } from 'pages/Movie/Movie';
 import { Search } from 'pages/Search';
 import Trending from 'pages/Trending';
 import { Route, Routes } from 'react-router-dom';

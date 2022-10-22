@@ -1,6 +1,6 @@
 import { searchMovies } from 'components/FetchAPI';
 import moviesMap from 'components/MoviesMap';
-import { SearchBox } from 'components/SearchBox';
+import { SearchBar } from 'components/SearchBar';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ export const Search = () => {
 
   return (
     <div>
-      <SearchBox onQuery={handleSubmit} />
+      <SearchBar onQuery={handleSubmit} />
       <ul>{moviesMap(movieFilter, location)}</ul>
     </div>
   );
