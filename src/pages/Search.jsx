@@ -31,7 +31,7 @@ export const Search = () => {
 
   return (
     <div>
-      <SearchBar onQuery={handleSubmit} />
+      <SearchBar onQuery={handleSubmit} value={movieName} />
       <ul>{moviesMap(movieFilter, location)}</ul>
     </div>
   );

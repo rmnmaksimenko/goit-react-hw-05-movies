@@ -1,11 +1,11 @@
 import { Field, Formik } from 'formik';
 import { SearchBox } from './SearchBar.styled';
 
-const initialValues = {
-  query: '',
-};
+export const SearchBar = ({ onQuery, value }) => {
+  const initialValues = {
+    query: value,
+  };
 
-export const SearchBar = ({ onQuery }) => {
   const HandleSearch = (values, { resetForm }) => {
     const { query } = values;
     if (query.trim() === '') {

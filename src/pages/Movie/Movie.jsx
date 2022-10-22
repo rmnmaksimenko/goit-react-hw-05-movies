@@ -13,6 +13,7 @@ export const Movie = () => {
   const [score, setScore] = useState('0');
   const [genres, setGenres] = useState([]);
   const [year, setYear] = useState('n/a');
+  const [loading, setLoading] = useState(true);
   const location = useLocation();
   useEffect(() => {
     async function showMovie() {
@@ -36,48 +37,66 @@ export const Movie = () => {
         console.log(data);
       } catch (error) {
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     }
     showMovie();
   });
   console.log(location);
+  function Loader() {
+    if (loading === true)
+      return (
+        <div>
+          <p>Loading, please wait</p>
+        </div>
+      );
+    return (
+      <div>
+        <MovieContainer>
+          <PosterContainer>
+            <img width={200} src={poster} alt={title} />
+          </PosterContainer>
+          <div>
+            <h2>
+              {title} ({year})
+            </h2>
+            <p>User score: {score}%</p>
+            <h3>Description</h3>
+            <p>{movieDesc}</p>
+            <h3>Genres</h3>
+            <p>{genres}</p>
+          </div>
+        </MovieContainer>
+        <InfoContainer>
+          <h3>Additional info:</h3>
+          <ul>
+            <li>
+              <MovieLink
+                to="cast"
+                state={{ from: location.state?.from ?? '/' }}
+              >
+                Cast
+              </MovieLink>
+            </li>
+            <li>
+              <MovieLink
+                to="reviews"
+                state={{ from: location.state?.from ?? '/' }}
+              >
+                Reviews
+              </MovieLink>
+            </li>
+          </ul>
+        </InfoContainer>
+        <Outlet />
+      </div>
+    );
+  }
   return (
     <main>
       <LinkBack />
-      <MovieContainer>
-        <PosterContainer>
-          <img width={200} src={poster} alt={title} />
-        </PosterContainer>
-        <div>
-          <h2>
-            {title} ({year})
-          </h2>
-          <p>User score: {score}%</p>
-          <h3>Description</h3>
-          <p>{movieDesc}</p>
-          <h3>Genres</h3>
-          <p>{genres}</p>
-        </div>
-      </MovieContainer>
-      <InfoContainer>
-        <h3>Additional info:</h3>
-        <ul>
-          <li>
-            <MovieLink to="cast" state={{ from: location.state?.from ?? '/' }}>
-              Cast
-            </MovieLink>
-          </li>
-          <li>
-            <MovieLink
-              to="reviews"
-              state={{ from: location.state?.from ?? '/' }}
-            >
-              Reviews
-            </MovieLink>
-          </li>
-        </ul>
-      </InfoContainer>
-      <Outlet />
+      {Loader()}
     </main>
   );
 };
