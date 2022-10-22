@@ -12,7 +12,7 @@ export const SearchBar = ({ onQuery, value }) => {
       return;
     }
     onQuery(query.toLowerCase().trim());
-    resetForm();
+    // resetForm();
   };
 
   return (
