@@ -1,7 +1,7 @@
+import { fetchReviews } from 'components/FetchAPI/FetchAPI';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchReviews } from '../FetchAPI/FetchAPI';
 
 const Reviews = () => {
   const [reviews, setReviews] = useState(``);
