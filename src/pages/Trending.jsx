@@ -1,6 +1,6 @@
-import { fetchTrending } from 'components/FetchAPI';
+import { fetchTrending } from 'components/FetchAPI/FetchAPI';
 import { useEffect, useState } from 'react';
-import moviesMap from 'components/MoviesMap';
+import moviesMap from 'components/MoviesMap/MoviesMap';
 
 const Trending = () => {
   const [movies, setMovies] = useState([]);

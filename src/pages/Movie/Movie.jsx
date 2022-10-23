@@ -1,6 +1,5 @@
-import LinkBack from 'components/LinkBack';
-import { fetchMovieById } from 'components/FetchAPI';
-import { MovieLink } from 'components/MovieLink.styled';
+import LinkBack from 'components/LinkBack/LinkBack';
+import { fetchMovieById } from 'components/FetchAPI/FetchAPI';
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
 import {
@@ -9,7 +8,7 @@ import {
   MovieContainer,
   PosterContainer,
 } from './Movie.styled';
-import { NavItem } from 'components/AppBar.styled';
+import { NavItem } from 'components/AppBar/AppBar.styled';
 
 const Movie = () => {
   const { id } = useParams();

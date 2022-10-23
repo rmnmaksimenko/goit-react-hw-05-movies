@@ -1,4 +1,4 @@
-import { MovieLink } from './MovieLink.styled';
+import { MovieLink } from '../MovieLink.styled';
 
 const moviesMap = (movieList, location) =>
   movieList

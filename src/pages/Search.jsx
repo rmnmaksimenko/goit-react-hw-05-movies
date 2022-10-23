@@ -1,6 +1,6 @@
-import { searchMovies } from 'components/FetchAPI';
-import moviesMap from 'components/MoviesMap';
-import { SearchBar } from 'components/SearchBar';
+import { searchMovies } from 'components/FetchAPI/FetchAPI';
+import moviesMap from 'components/MoviesMap/MoviesMap';
+import { SearchBar } from 'components/SearchBar/SearchBar';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 

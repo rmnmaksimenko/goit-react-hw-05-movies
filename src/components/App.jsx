@@ -1,13 +1,13 @@
-import { lazy, Suspense } from 'react';
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Layout } from './Layout';
+import { Layout } from './Layout/Layout';
 import './index.css';
 
 const Trending = lazy(() => import('pages/Trending'));
 const Search = lazy(() => import('pages/Search'));
 const Movie = lazy(() => import('pages/Movie/Movie'));
-const Cast = lazy(() => import('./Cast'));
-const Reviews = lazy(() => import('./Reviews'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
 
 export const App = () => {
   return (

@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { MovieLink } from './MovieLink.styled';
+import { MovieLink } from '../MovieLink.styled';
 
 const LinkBack = () => {
   const location = useLocation();
