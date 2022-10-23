@@ -1,13 +1,13 @@
-import { Movie } from 'pages/Movie/Movie';
-import { Search } from 'pages/Search';
-import Trending from 'pages/Trending';
+import { lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Cast from './Cast';
-import './index.css';
 import { Layout } from './Layout';
-import Reviews from './Reviews';
+import './index.css';
 
-// api_key = 1b4670fa78c776f91ad91934fb8aeb13
+const Trending = lazy(() => import('pages/Trending'));
+const Search = lazy(() => import('pages/Search'));
+const Movie = lazy(() => import('pages/Movie/Movie'));
+const Cast = lazy(() => import('./Cast'));
+const Reviews = lazy(() => import('./Reviews'));
 
 export const App = () => {
   return (
@@ -20,7 +20,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<div>404 Not found</div>} />
+          <Route path="*" element={<Trending />} />
         </Route>
       </Routes>
     </div>

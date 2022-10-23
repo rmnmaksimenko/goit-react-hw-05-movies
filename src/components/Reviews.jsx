@@ -36,4 +36,5 @@ const Reviews = () => {
   }, [id]);
   return <div>{reviews}</div>;
 };
+
 export default Reviews;

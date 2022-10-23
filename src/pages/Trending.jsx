@@ -2,7 +2,7 @@ import { fetchTrending } from 'components/FetchAPI';
 import { useEffect, useState } from 'react';
 import moviesMap from 'components/MoviesMap';
 
-export default function Trending() {
+const Trending = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -18,4 +18,5 @@ export default function Trending() {
   }, []);
   console.log(2, movies);
   return <ul>{moviesMap(movies)}</ul>;
-}
+};
+export default Trending;

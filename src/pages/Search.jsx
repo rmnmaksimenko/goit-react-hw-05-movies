@@ -4,7 +4,7 @@ import { SearchBar } from 'components/SearchBar';
 import { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-export const Search = () => {
+const Search = () => {
   const [movieFilter, setMovieFilter] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
@@ -36,3 +36,5 @@ export const Search = () => {
     </div>
   );
 };
+
+export default Search;

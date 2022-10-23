@@ -1,11 +1,17 @@
 import LinkBack from 'components/LinkBack';
 import { fetchMovieById } from 'components/FetchAPI';
 import { MovieLink } from 'components/MovieLink.styled';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Outlet, useLocation, useParams } from 'react-router-dom';
-import { InfoContainer, MovieContainer, PosterContainer } from './Movie.styled';
+import {
+  AdditionalInfo,
+  InfoContainer,
+  MovieContainer,
+  PosterContainer,
+} from './Movie.styled';
+import { NavItem } from 'components/AppBar.styled';
 
-export const Movie = () => {
+const Movie = () => {
   const { id } = useParams();
   const [poster, setPoster] = useState('');
   const [movieDesc, setMovieDesc] = useState('');
@@ -13,7 +19,6 @@ export const Movie = () => {
   const [score, setScore] = useState('0');
   const [genres, setGenres] = useState([]);
   const [year, setYear] = useState('n/a');
-  const [loading, setLoading] = useState(true);
   const location = useLocation();
   useEffect(() => {
     async function showMovie() {
@@ -37,21 +42,14 @@ export const Movie = () => {
         console.log(data);
       } catch (error) {
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     }
     showMovie();
   });
   console.log(location);
-  function Loader() {
-    if (loading === true)
-      return (
-        <div>
-          <p>Loading, please wait</p>
-        </div>
-      );
-    return (
+  return (
+    <main>
+      <LinkBack />
       <div>
         <MovieContainer>
           <PosterContainer>
@@ -70,33 +68,28 @@ export const Movie = () => {
         </MovieContainer>
         <InfoContainer>
           <h3>Additional info:</h3>
-          <ul>
+          <AdditionalInfo>
             <li>
-              <MovieLink
-                to="cast"
-                state={{ from: location.state?.from ?? '/' }}
-              >
+              <NavItem to="cast" state={{ from: location.state?.from ?? '/' }}>
                 Cast
-              </MovieLink>
+              </NavItem>
             </li>
             <li>
-              <MovieLink
+              <NavItem
                 to="reviews"
                 state={{ from: location.state?.from ?? '/' }}
               >
                 Reviews
-              </MovieLink>
+              </NavItem>
             </li>
-          </ul>
+          </AdditionalInfo>
         </InfoContainer>
-        <Outlet />
+        <Suspense fallback={<div>Loading subpage...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
-    );
-  }
-  return (
-    <main>
-      <LinkBack />
-      {Loader()}
     </main>
   );
 };
+
+export default Movie;

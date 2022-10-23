@@ -15,3 +15,8 @@ export const InfoContainer = styled.div`
   margin-bottom: 20px;
   padding-bottom: 10px;
 `;
+
+export const AdditionalInfo = styled.ul`
+  margin: 0;
+  padding: 0;
+`;
